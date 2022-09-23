@@ -58,7 +58,7 @@ form {
 
 
 .wrapper {
-  min-height: 100vh;
+  min-height:45.55vh;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -77,7 +77,7 @@ form {
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 0;
+  padding-bottom: 1rem;
 }
 
 
