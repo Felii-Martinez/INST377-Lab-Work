@@ -63,6 +63,51 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[currentPosition + index].classList.remove('tetromino')
     })
   }
+  
+  //make the tetromino move down every second
+  timerId = setInterval(movedown, 1000)
+
+  //assign function to keyCodes
+  function controle(e) {
+    if(e.keyCode === 37) {
+        moveLeft()
+    }
+  }
+  document.addEventListener('keyup',control)
+
+  //move down function
+  function moveDown(){
+    undraw()
+    currentPosition += width
+    draw()
+    freeze()
+  }
+
+  //freeze function
+  function freeze(){
+    if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))){
+        current.forEach(index => squares[currentPosition + index].classList.contains('taken'))
+        //start new tetromino falling
+        random = Math.floor(Math.random() * theTetrominos.length)
+        current = theTetrominos[random][currentRotation]
+        currentPosition = 4
+        draw()
+    }
+  }
+
+  //move tetromino left, unless is at edge
+  function moveLeft(){
+    undraw()
+    const isAtLeftEdge = current.some(index => (currentPosition + index) %width ===0)
+
+    if(!isAtLeftEdge) currentPosition -=1
+
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+        currentPosition +=1
+    }
+  }
+
+
 
 
 
