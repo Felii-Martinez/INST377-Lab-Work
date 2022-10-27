@@ -167,18 +167,15 @@ form {
 
 .left_section {
   background-color: rgba(88, 139, 0, 0.8);
- 
+  flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem ;
-  size:1900000px
-
-
 }
 .right_section {
   background-color: rgba(138, 234, 255, 0.7);
   flex: 1 2 auto;
   margin: 1rem;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   max-width: 450px;
   display: flex;
@@ -193,17 +190,18 @@ form {
 */
 
 .footer {
-  display:flex;
-  flex-wrap: wrap;
-  flex:end;
-  align-items: flex-end;
+  position: absolute;
  
+  flex-shrink: 0;
   padding: 1rem;
   background-color: rgba(0, 139, 139, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
- 
-  }
+  bottom: 0
+  
+  ;
+  align-items: stretch; 
+}
 
 .footer a {
   color: rgba(255, 224, 138, 1);
