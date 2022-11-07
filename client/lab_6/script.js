@@ -63,6 +63,7 @@ async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
+  const loadAnimation = document.querySelector('.lds-ellipsis'); // reference to our load animation
   submit.style.display = 'none'; // let your submit button disappear
 
   /*
@@ -97,6 +98,9 @@ async function mainEvent() {
     form.addEventListener('submit', (submitEvent) => {
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
+
+      loadAnimation.classList.remove('lds-ellipse');
+      loadAnimation.classList.add('lds-ellipse_hidden');
 
       // This constant will have the value of your 15-restaurant collection when it processes
       const restaurantList = processRestaurants(arrayFromJson.data);
