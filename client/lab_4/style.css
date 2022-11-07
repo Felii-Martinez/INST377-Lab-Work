@@ -96,7 +96,7 @@ form {
 
 
 .wrapper {
-  min-height:45.55vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -115,7 +115,7 @@ form {
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 
@@ -130,14 +130,14 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: rgb(255, 138, 196);
+  background-color: #ffe08a;
   color: #4a4a4a;
 
   /* shapes */
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move it around */
+  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
 
 
   /* box-shadows are fancy */
@@ -166,21 +166,19 @@ form {
 }
 
 .left_section {
-  background-color: rgba(88, 139, 0, 0.8);
+  background-color: rgba(0, 139, 139, 0.8);
   flex: 0 1 auto;
   margin: 1rem;
-  padding: 1.5rem ;
+  padding: 1.5rem;
 }
+
 .right_section {
-  background-color: rgba(138, 234, 255, 0.7);
+  background-color: rgba(255, 224, 138, 0.7);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
-  justify-content: center;
-  max-width: 450px;
-  display: flex;
+  display:flex;
   flex-direction: column;
-  
 }
 
 /*
@@ -190,17 +188,12 @@ form {
 */
 
 .footer {
-  position: absolute;
- 
+  display: block;
   flex-shrink: 0;
   padding: 1rem;
   background-color: rgba(0, 139, 139, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
-  bottom: 0
-  
-  ;
-  align-items: stretch; 
 }
 
 .footer a {
@@ -241,4 +234,76 @@ form {
 .grid img {
   width: 150px;
   height: 150px;
+}
+
+
+/* Carousel */
+div.carousel {
+  max-width: 300px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.carousel .slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* .carousel_item, */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.carousel_item img {
+  /* 
+    Setting width, rather than max-width or min-width,
+    means annoying pop-ins won't happen
+    but it also means you need to format your images to be compatible
+    or they will stretch weird
+
+    - try a tall one and see what happens
+    - change the height on a fixed image size and see what happens
+    - now make sure that images are _always_ square
+    - ... there's a reason crop tools are popular in image editors
+   */
+  width: 150px; 
+}
+
+.prev,
+.next {
+  border: none;
+  margin: 2px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 45px;
+  padding: 10px;
+  line-height: 0; /* This centers a button's text! */
+  border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
+}
+
+.prev:focus,
+.next:focus {
+  margin: 0;
+  /* Pick a good border colour and check out how it works with your buttons */
+  color: rgb(243, 42, 6);
+}
+
+.prev:hover,
+.next:hover {
+  /* Pick a good background colour for your hover pseudoclass */
+  color: rgb(243, 42, 6);
 }
