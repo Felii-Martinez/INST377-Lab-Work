@@ -99,7 +99,7 @@ async function mainEvent() {
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
 
-      loadAnimation.classList.remove('lds-ellipssis');
+      loadAnimation.classList.remove('lds-ellipsis');
       loadAnimation.classList.add('lds-ellipsis_hidden');
 
       // This constant will have the value of your 15-restaurant collection when it processes
