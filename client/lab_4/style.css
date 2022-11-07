@@ -122,6 +122,8 @@ form {
 }
 
 
+
+
 /*
   This rule implies that the H1 tag lives within another HTML tag
   It "inherits" some rules from the above
@@ -199,6 +201,8 @@ form {
   font-weight: 600;
   display: flex;
   position: sticky;
+  border: 2px dashed;
+  border-radius: 4px;
 }
 
 .footer a {
