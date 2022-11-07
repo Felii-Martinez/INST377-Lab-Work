@@ -115,10 +115,8 @@ form {
 }
 
 .header {
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1.5rem;
+  border: 4px dashed;
+  border-radius: 6px;
 }
 
 
