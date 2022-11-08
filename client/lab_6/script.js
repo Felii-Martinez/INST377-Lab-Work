@@ -29,7 +29,7 @@ function injectHTML(list) {
     listEl.appendChild(el);
   });
 }
-  /*
+/*
   ## JS and HTML Injection
     There are a bunch of methods to inject text or HTML into a document using JS
     Mainly, they're considered "unsafe" because they can spoof a page pretty easily
@@ -43,7 +43,6 @@ function injectHTML(list) {
     - using a .forEach method, inject a list element into your index.html for every element in the list
     - Display the name of that restaurant and what category of food it is
 */
-}
 
 function processRestaurants(list) {
   console.log('fired restaurants list');
