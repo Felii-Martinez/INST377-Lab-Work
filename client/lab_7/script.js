@@ -53,6 +53,15 @@ function processRestaurants(list) {
   });
   return newArray;
 
+  function filterList(array, filterInputValue) {
+    const newArray = array.filter((item) => {
+      const lowerCaseName = item.name.toLowerCase();
+      const lowerCaseQuery = filterInputValue.toLowerCase();
+      return lowerCaseName.includes(lowerCaseQuery);
+    });
+    return newArray;
+  }
+
   /*
       ## Process Data Separately From Injecting It
         This function should accept your 1,000 records
@@ -111,30 +120,38 @@ async function mainEvent() {
   console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data?.length > 0) { // the question mark in this means "if this is set at all"
-    submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
+  if (arrayFromJson.data?.length > 0) {return;} // the question mark in this means "if this is set at all"
 
-    loadAnimation.classList.remove('lds-ellipsis');
-    loadAnimation.classList.add('lds-ellipsis_hidden');
+  let currentList = [];
 
-    // And here's an eventListener! It's listening for a "submit" button specifically being clicked
-    // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
-    form.addEventListener('submit', (submitEvent) => {
-      // This is needed to stop our page from changing to a new URL even though it heard a GET request
-      submitEvent.preventDefault();
+  submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
-      // This constant will have the value of your 15-restaurant collection when it processes
-      const restaurantList = processRestaurants(arrayFromJson.data);
-      console.log(restaurantList);
+  loadAnimation.classList.remove('lds-ellipsis');
+  loadAnimation.classList.add('lds-ellipsis_hidden');
 
-      // And this function call will perform the "side effect" of injecting the HTML list for you
-      injectHTML(restaurantList);
+  form.addEventListener('input', (event) => {
+    console.log('input', event.target.value);
+    const newFilterList = filterList(arrayFromJson.data, event.target.value);
+    injectHTML(newFilterList);
+  });
 
-      // By separating the functions, we open the possibility of regenerating the list
-      // without having to retrieve fresh data every time
-      // We also have access to some form values, so we could filter the list based on name
-    });
-  }
+  // And here's an eventListener! It's listening for a "submit" button specifically being clicked
+  // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
+  form.addEventListener('submit', (submitEvent) => {
+    // This is needed to stop our page from changing to a new URL even though it heard a GET request
+    submitEvent.preventDefault();
+
+    // This constant will have the value of your 15-restaurant collection when it processes
+    currentList = processRestaurants(arrayFromJson.data);
+    console.log(currentList);
+
+    // And this function call will perform the "side effect" of injecting the HTML list for you
+    injectHTML(currentList);
+
+    // By separating the functions, we open the possibility of regenerating the list
+    // without having to retrieve fresh data every time
+    // We also have access to some form values, so we could filter the list based on name
+  });
 }
 
 /*
