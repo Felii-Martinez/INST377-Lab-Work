@@ -94,9 +94,15 @@ function initMap() {
 
 function markerPlace(array, map) {
   console.log('markerPlace', array);
-  let marker = L.marker([51.5, -0.09]).addTo(map);
+  // const marker = L.marker([51.5, -0.09]).addTo(map);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.marker) {
+      layer.remove();
+    }
+  });
   array.forEach((item) => {
     const {coordinates} = item.geocoded_column_1;
+    console.log(item);
     L.marker([coordinates[1], coordinates[0]]).addTo(map);
   });
 }
