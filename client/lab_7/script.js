@@ -131,7 +131,7 @@ async function mainEvent() {
 
     form.addEventListener('input', (event) => {
       console.log('input', event.target.value);
-      const newFilterList = filteredList(currentList, event.target.value)
+      const newFilterList = filterList(currentList, event.target.value)
       injectHTML(newFilterList);
     });
 
