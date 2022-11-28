@@ -319,6 +319,14 @@ form input {
       This comes from loading.io/css - it's nice to show that something is happening!
   */
   #map { height: 180px; }
+  #map {
+    display: block;
+    width: 400px;
+    height: 380px;
+    border: 2px dashed rgb(99,99,99);
+    margin-bottom: 1rem;
+
+  }
   
   .lds-ellipsis {
     display: inline-block;
