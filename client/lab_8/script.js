@@ -82,7 +82,13 @@ function filterList(array, filterInputValue) {
   });
 }
 
+function initMap() {
+  console.log('initMap');
+  const map = L.map('map').setView([51.505, -0.09], 13);
+}
+
 async function mainEvent() {
+  initMap();
   /*
         ## Main Event
           Separating your main programming from your side functions will help you organize your thoughts
